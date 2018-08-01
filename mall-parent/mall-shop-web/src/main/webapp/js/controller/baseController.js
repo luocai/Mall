@@ -1,9 +1,11 @@
 //基本控制层 
 app.controller('baseController' ,function($scope){	
 
+	
     //重新加载列表 数据
     $scope.reloadList=function(){
-    	   //切换页码 
+    	   //切换页码
+    	
         $scope.search( $scope.paginationConf.currentPage, $scope.paginationConf.itemsPerPage);    
     }
 	//分页控件配置 
@@ -22,7 +24,6 @@ app.controller('baseController' ,function($scope){
 	$scope.updateSelection = function($event, id) {		
 		if($event.target.checked){//如果是被选中,则增加到数组
 			$scope.selectIds.push( id);	
-alert("lala")
 console.log($scope.selectIds);
 		}else{
 			var idx = $scope.selectIds.indexOf(id);

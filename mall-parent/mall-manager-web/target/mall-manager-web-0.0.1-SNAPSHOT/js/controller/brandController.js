@@ -62,7 +62,7 @@ app.controller("brandController",function($scope,$controller,brandService){
 				
 			}
 			
-			/*//删除
+			
 			$scope.selectIds = [];
 			
 			$scope.updateSelection = function($event,id){
@@ -74,7 +74,7 @@ console.log($scope.selectIds);
 			        $scope.selectIds.splice(idx, 1);//删除 
 				
 				}
-			}*/
+			}
 			
 			//删除
 			$scope.delete = function(){

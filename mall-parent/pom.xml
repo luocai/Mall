@@ -281,5 +281,12 @@
 		<module>mall-sellergoods-service</module>
 		<module>mall-manager-web</module>
 		<module>mall-shop-web</module>
+		<module>mall-content-interface</module>
+		<module>mall-content-service</module>
+		<module>mall-portal-web</module>
+		<module>mall-solr-util</module>
+		<module>mall-search-interface</module>
+		<module>mall-search-service</module>
+		<module>mall-search-web</module>
 	</modules>
 </project>

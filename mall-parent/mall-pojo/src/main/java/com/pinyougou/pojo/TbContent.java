@@ -17,7 +17,13 @@ public class TbContent implements Serializable{
 
     private Integer sortOrder;
 
-    public Long getId() {
+    @Override
+	public String toString() {
+		return "TbContent [id=" + id + ", categoryId=" + categoryId + ", title=" + title + ", url=" + url + ", pic="
+				+ pic + ", status=" + status + ", sortOrder=" + sortOrder + "]";
+	}
+
+	public Long getId() {
         return id;
     }
 

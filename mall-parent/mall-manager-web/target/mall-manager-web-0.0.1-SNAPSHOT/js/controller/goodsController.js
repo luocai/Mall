@@ -1,5 +1,5 @@
  //控制层 
-app.controller('goodsController' ,function($scope,$controller   ,goodsService){	
+app.controller('goodsController' ,function($scope,$controller   ,goodsService,itemCatService){	
 	
 	$controller('baseController',{$scope:$scope});//继承
 	
@@ -51,16 +51,49 @@ app.controller('goodsController' ,function($scope,$controller   ,goodsService){
 		);				
 	}
 	
-	 
+	//更新选择
+	$scope.selectIds = [];
+	
+	$scope.updateSelection = function($event,id){
+		if($event.target.checked){
+			$scope.selectIds.push(id);
+console.log($scope.selectIds);
+		}else{
+			var idx = $scope.selectIds.indexOf(id);
+	        $scope.selectIds.splice(idx, 1);//删除 
+		
+		}
+	}
+	
+	//审核结果
+	$scope.check = function(status){
+		
+		goodsService.check($scope.selectIds, status).success(
+				function(response){
+					if(response.success){//成功
+						alert(response.message);
+						$scope.reloadList();//刷新列表
+						$scope.selectIds=[];//清空ID集合
+					}else{
+						alert(response.message);
+					}
+				}
+
+		)
+		
+	}
+	
 	//批量删除 
 	$scope.dele=function(){			
 		//获取选中的复选框			
 		goodsService.dele( $scope.selectIds ).success(
 			function(response){
-				if(response.success){
+				if(response.success){//成功
 					$scope.reloadList();//刷新列表
-					$scope.selectIds=[];
-				}						
+					$scope.selectIds=[];//清空ID集合
+				}else{
+					alert(response.message);
+				}				
 			}		
 		);				
 	}
@@ -76,5 +109,19 @@ app.controller('goodsController' ,function($scope,$controller   ,goodsService){
 			}			
 		);
 	}
+	
+	$scope.status=['未审核','已审核','审核未通过','关闭'];//商品状态
+	$scope.itemCatList=[];//商品分类列表
+	//查询商品分类
+	$scope.findItemCatList=function(){
+		itemCatService.findAll().success(
+			function(response){
+				for(var i=0;i<response.length;i++){
+					$scope.itemCatList[response[i].id ]=response[i].name;		
+				}					
+			}		
+		);		
+	}
+
     
 });	

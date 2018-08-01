@@ -13,7 +13,7 @@
 	<dubbo:application name="mall-sellergoods-service"/>  
 	
 	<!--服务器端要占用的端口  -->
-    <dubbo:registry address="zookeeper://192.168.25.137:2181"/>
+    <dubbo:registry address="zookeeper://192.168.25.141:2181"/>
     <dubbo:annotation package="com.pinyougou.sellergoods.service.impl" />  
    
    
